@@ -29,6 +29,7 @@ function Freeroam:__init()
     Events:Subscribe( "ModulesLoad",        self, self.ModulesLoad )
     Events:Subscribe( "PlayerSpawn",        self, self.PlayerSpawn )
     Events:Subscribe( "PlayerChat",         self, self.PlayerChat )
+    Events:Subscribe( "PlayerDeath",         self, self.PlayerDeath )
 end
 
 -- Functions to parse the spawns
@@ -305,6 +306,12 @@ function Freeroam:PlayerChat( args )
     end
 
     return false
+end
+
+function Freeroam:PlayerDeath( args )
+	if args.killer and args.killer:GetSteamId() ~= args.player:GetSteamId() then
+		args.killer:SetMoney(args.killer:GetMoney() + 100)
+	end
 end
 
 -- Create our class, and start the script proper
