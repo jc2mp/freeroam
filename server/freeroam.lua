@@ -254,11 +254,11 @@ end
 
 function Freeroam:ModulesLoad()
     for _, v in ipairs(self.player_spawns) do
-        Events:FireRegisteredEvent( "SpawnPoint", v )
+        Events:Fire( "SpawnPoint", v )
     end
 
     for _, v in pairs(self.teleports) do
-        Events:FireRegisteredEvent( "TeleportPoint", v )
+        Events:Fire( "TeleportPoint", v )
     end
 end
 
