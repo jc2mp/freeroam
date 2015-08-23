@@ -18,7 +18,7 @@ function Freeroam:DrawShadowedText( pos, text, colour, size, scale )
     local shadow_colour = Color( 0, 0, 0, colour.a )
     shadow_colour = shadow_colour * 0.4
 
-    Render:DrawText( pos + Vector3( 1, 1, 0 ), text, shadow_colour, size, scale )
+    Render:DrawText( pos + Vector3( 1, 1, 2 ), text, shadow_colour, size, scale )
     Render:DrawText( pos, text, colour, size, scale )
 end
 
