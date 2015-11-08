@@ -4,7 +4,7 @@ function Freeroam:__init()
 	self.hotspots = {}
 
 	Network:Subscribe( "Hotspots", self, self.Hotspots )
-	Events:Subscribe( "Render", self, self.Render )
+	Events:Subscribe( "GameRender", self, self.GameRender )
 end
 
 function Freeroam:Hotspots( args )
@@ -18,7 +18,7 @@ function Freeroam:DrawShadowedText( pos, text, colour, size, scale )
     local shadow_colour = Color( 0, 0, 0, colour.a )
     shadow_colour = shadow_colour * 0.4
 
-    Render:DrawText( pos + Vector3( 1, 1, 0 ), text, shadow_colour, size, scale )
+    Render:DrawText( pos + Vector3( 1, 1, 2 ), text, shadow_colour, size, scale )
     Render:DrawText( pos, text, colour, size, scale )
 end
 
@@ -48,7 +48,7 @@ function Freeroam:DrawHotspot( v, dist )
 	self:DrawShadowedText( Vector3( 0, 0, 0 ), text, Color( 255, 255, 255, alpha_factor ), TextSize.VeryLarge )
 end
 
-function Freeroam:Render()
+function Freeroam:GameRender()
 	if Game:GetState() ~= GUIState.Game then return end
 	if LocalPlayer:GetWorld() ~= DefaultWorld then return end
 
